@@ -1,9 +1,10 @@
 import React from 'react';
 import { Paper, CardContent, Typography, Box, Button } from '@mui/material';
+import '../css/JobCard.css'; // Make sure this path is correct
 
 const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink, minExp, maxExp }) => {
   return (
-    <Paper>
+    <Paper className="job-card">
       <CardContent>
         <Box>
           <Typography>{companyName}</Typography>
