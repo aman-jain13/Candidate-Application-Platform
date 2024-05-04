@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, CardContent, Typography, Box, Button } from '@mui/material';
+import { Paper, CardContent, Typography, Box, ButtonBase } from '@mui/material';
 import '../css/JobCard.css'; // Make sure this path is correct
 
 const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink, minExp, maxExp, logoUrl }) => {
@@ -24,8 +24,8 @@ const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink
           <Typography>Experience: {minExp}-{maxExp} years</Typography>
         </Box>
       </CardContent>
-      <Box textAlign="center">
-        <Button variant="contained" color="primary">Easy Apply</Button>
+      <Box className="button-box">
+        <ButtonBase className="custom-btn">⚡ Easy Apply</ButtonBase>
       </Box>
     </Paper>
   );
