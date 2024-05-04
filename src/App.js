@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Grid } from '@mui/material';
 import JobCard from './components/JobCard';
 import './App.css';
+import Filters from './components/Filters';
 
 const App = () => {
   const [jobData, setJobData] = useState([]);
@@ -9,6 +10,15 @@ const App = () => {
   const [hasMore, setHasMore] = useState(true);
   const page = useRef(1);
   const loader = useRef(null);
+  const [filters, setFilters] = useState({
+    minExperience: '',
+    companyName: '',
+    location: '',
+    remote: '',
+    techStack: '',
+    role: '',
+    minBasePay: '',
+  });
 
   const fetchJobs = async () => {
     if (loading || !hasMore) return;
@@ -55,6 +65,25 @@ const App = () => {
     }
   };
   
+  const applyFilters = () => {
+    let filteredJobs = jobData.filter(job => {
+      return (
+        (filters.minExperience === '' || (job.minExp <= parseInt(filters.minExperience) && job.maxExp >= parseInt(filters.minExperience))) &&
+        (filters.companyName === '' || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase())) &&
+        (filters.location === '' || job.location.toLowerCase().includes(filters.location.toLowerCase())) &&
+        (filters.remote === '' || job.location.toLowerCase() === 'remote') &&
+        (filters.techStack === '' || job.techStack.toLowerCase().includes(filters.techStack.toLowerCase())) &&
+        (filters.role === '' || job.jobRole.toLowerCase().includes(filters.role.toLowerCase())) &&
+        (filters.minBasePay === '' || (job.minJdSalary >= parseInt(filters.minBasePay) && job.maxJdSalary <= parseInt(filters.minBasePay)))
+      );
+    });
+
+    return filteredJobs;
+  };
+
+  const handleFilterChange = (filterName, value) => {
+    setFilters({ ...filters, [filterName]: value });
+  };
 
   useEffect(() => {
     fetchJobs();
@@ -66,15 +95,18 @@ const App = () => {
   }, []);
 
   return (
-    <Grid container spacing={2} className="job-grid">
-      {jobData && jobData.map((job) => (
-        <Grid item key={job.jdUid} className="job-card">
-          <JobCard {...job} />
-        </Grid>
-      ))}
-      {loading && <div className="loading" ref={loader}>Loading...</div>}
-    </Grid>
-  );
+    <div className="App">
+      <Filters filters={filters} onFilterChange={handleFilterChange} />
+      <Grid container spacing={2} className="job-grid">
+        {applyFilters().map((job) => (
+          <Grid item key={job.jdUid} className="job-card">
+            <JobCard {...job} />
+          </Grid>
+        ))}
+        {loading && <div className="loading" ref={loader}>Loading...</div>}
+      </Grid>
+    </div>
+  );  
 };
 
 export default App;
