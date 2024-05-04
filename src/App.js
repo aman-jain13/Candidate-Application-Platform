@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import JobCard from './components/JobCard';
+import './App.css';
 
 const App = () => {
   const [jobData, setJobData] = useState([]);
@@ -34,9 +35,11 @@ const App = () => {
   }, []);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} className="job-grid">
       {jobData && jobData.map((job) => (
-        <JobCard key={job.jdUid} {...job} />
+        <Grid item key={job.jdUid} className="job-card">
+          <JobCard {...job} />
+        </Grid>
       ))}
     </Grid>
   );
