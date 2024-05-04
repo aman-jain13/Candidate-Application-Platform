@@ -10,7 +10,7 @@ const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink
           <img src={logoUrl} alt="Company Logo" className="company-logo" />
           <div className="job-details">
             <Typography className="company-name">{companyName}</Typography>
-            <Typography className="job-role">{jobRole}</Typography>
+            <Typography className="job-title">{jobRole}</Typography>
             <Typography className="location">{location}</Typography>
           </div>
         </Box>
