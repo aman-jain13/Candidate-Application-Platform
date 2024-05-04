@@ -2,14 +2,17 @@ import React from 'react';
 import { Paper, CardContent, Typography, Box, Button } from '@mui/material';
 import '../css/JobCard.css'; // Make sure this path is correct
 
-const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink, minExp, maxExp }) => {
+const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink, minExp, maxExp, logoUrl }) => {
   return (
     <Paper className="job-card">
       <CardContent>
-        <Box>
-          <Typography>{companyName}</Typography>
-          <Typography>{jobRole}</Typography>
-          <Typography>{location}</Typography>
+				<Box className="job-info-box">
+          <img src={logoUrl} alt="Company Logo" className="company-logo" />
+          <div className="job-details">
+            <Typography className="company-name">{companyName}</Typography>
+            <Typography className="job-role">{jobRole}</Typography>
+            <Typography className="location">{location}</Typography>
+          </div>
         </Box>
         <Box>
           <Typography>{jobDetailsFromCompany}</Typography>
