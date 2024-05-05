@@ -1,8 +1,4 @@
 .MuiPaper-root.job-card {
-	background-color: rgb(255, 255, 255);
-	color: rgba(0, 0, 0, 0.87);
-	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-	overflow: hidden;
 	max-width: 360px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px !important;
 	display: flex !important;
@@ -13,8 +9,13 @@
 	position: relative !important;
 	border-radius: 20px !important;
 	padding: 5px !important;
+	transition: all 0.3s;
 }
 
+.job-card.hovered {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .job-info-box {
 	display: flex;
@@ -45,6 +46,16 @@
 	font-size: 13px;
 	font-weight: 500;
 	margin-top: 5px;
+}
+
+.status-container {
+	flex-grow: 1;
+	width: 100%;
+	padding: 0 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
 }
 
 .button-box {

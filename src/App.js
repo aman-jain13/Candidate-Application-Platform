@@ -95,17 +95,19 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Filters filters={filters} onFilterChange={handleFilterChange} />
-      <Grid container spacing={2} className="job-grid">
-      {applyFilters().map((job, index) => (
-        <Grid item key={index} className="job-card">
-          <JobCard {...job} />
+    <main className="App">
+      <div>
+        <Filters filters={filters} onFilterChange={handleFilterChange} />
+        <Grid container spacing={2} className="job-grid">
+        {applyFilters().map((job, index) => (
+          <Grid item key={index} className="job-card">
+            <JobCard {...job} />
+          </Grid>
+        ))}
+          {loading && <div className="loading" ref={loader}>Loading...</div>}
         </Grid>
-      ))}
-        {loading && <div className="loading" ref={loader}>Loading...</div>}
-      </Grid>
-    </div>
+      </div>
+    </main>
   );  
 };
 
