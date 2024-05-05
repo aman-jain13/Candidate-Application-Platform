@@ -67,11 +67,12 @@ const App = () => {
   
   const applyFilters = () => {
     let filteredJobs = jobData.filter(job => {
+      const isRemote = job.location.toLowerCase() === 'remote';
       return (
         (filters.minExperience === '' || (job.minExp <= parseInt(filters.minExperience) && job.maxExp >= parseInt(filters.minExperience))) &&
         (filters.companyName === '' || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase())) &&
         (filters.location === '' || job.location.toLowerCase().includes(filters.location.toLowerCase())) &&
-        (filters.remote === '' || job.location.toLowerCase() === 'remote') &&
+        ((filters.remote === 'remote' && isRemote) || (filters.remote !== 'remote' && !isRemote)) &&
         (filters.techStack === '' || job.techStack.toLowerCase().includes(filters.techStack.toLowerCase())) &&
         (filters.role === '' || job.jobRole.toLowerCase().includes(filters.role.toLowerCase())) &&
         (filters.minBasePay === '' || (job.minJdSalary >= parseInt(filters.minBasePay)))
@@ -79,7 +80,7 @@ const App = () => {
     });
 
     return filteredJobs;
-  };
+  };  
 
   const handleFilterChange = (filterName, value) => {
     setFilters({ ...filters, [filterName]: value });
