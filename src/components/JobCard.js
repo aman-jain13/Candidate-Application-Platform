@@ -25,7 +25,8 @@ const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink
           <a href={jdLink} target="_blank" rel="noopener noreferrer">View Job</a>
         </Box>
         <Box>
-          <Typography>Experience: {minExp}-{maxExp} years</Typography>
+          <Typography className="experience-label">Minimum Experience</Typography>
+          <Typography className="experience-years">{minExp}-{maxExp} years</Typography>
         </Box>
       </CardContent>
       <Box className="button-box">
