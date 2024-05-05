@@ -22,7 +22,7 @@ const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink
           </Box>
         </Box>
         <Box className="view-job">
-          <a href={jdLink} target="_blank" rel="noopener noreferrer">View Job</a>
+          <a href={jdLink} target="_blank" className="view-job-link">View job</a>
         </Box>
         <Box>
           <Typography className="experience-label">Minimum Experience</Typography>

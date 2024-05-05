@@ -82,11 +82,14 @@
 	font-weight: 500;
 }
 
-.view-job {
+.MuiBox-root.view-job {
 	text-align: center;
 	margin-bottom: 0.5rem;
 	position: relative;
 	top: -20px;
+}
+
+.view-job-link {
 	color: #4943da;
 	cursor: pointer;
 	text-decoration: none;
