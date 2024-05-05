@@ -74,7 +74,7 @@ const App = () => {
         (filters.remote === '' || job.location.toLowerCase() === 'remote') &&
         (filters.techStack === '' || job.techStack.toLowerCase().includes(filters.techStack.toLowerCase())) &&
         (filters.role === '' || job.jobRole.toLowerCase().includes(filters.role.toLowerCase())) &&
-        (filters.minBasePay === '' || (job.minJdSalary <= parseInt(filters.minBasePay)))
+        (filters.minBasePay === '' || (job.minJdSalary >= parseInt(filters.minBasePay)))
       );
     });
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, TextField, Select, MenuItem } from '@mui/material';
+import '../css/Filters.css'
 
 const Filters = ({ filters, onFilterChange }) => {
   return (
