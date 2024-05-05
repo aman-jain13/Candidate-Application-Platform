@@ -14,10 +14,14 @@ const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink
             <Typography className="location">{location}</Typography>
           </div>
         </Box>
-        <Box>
-          <Typography>{jobDetailsFromCompany}</Typography>
+        <Box className="job-description">
+          <Typography className="about-company-tag">About Company: </Typography>
+          <Box>
+            <Typography><strong>About Us</strong></Typography>  
+            <Typography>{jobDetailsFromCompany}</Typography>
+          </Box>
         </Box>
-        <Box>
+        <Box className="view-job">
           <a href={jdLink} target="_blank" rel="noopener noreferrer">View Job</a>
         </Box>
         <Box>
