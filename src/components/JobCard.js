@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, CardContent, Typography, Box, ButtonBase } from '@mui/material';
-import '../css/JobCard.css'; // Make sure this path is correct
+import '../css/JobCard.css'; 
 
 const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink, minExp, maxExp, logoUrl }) => {
   return (
@@ -30,7 +30,13 @@ const JobCard = ({ companyName, jobRole, location, jobDetailsFromCompany, jdLink
         </Box>
       </CardContent>
       <Box className="button-box">
-        <ButtonBase className="custom-btn">⚡ Easy Apply</ButtonBase>
+        <ButtonBase
+          className="custom-btn"
+          focusRipple
+          TouchRippleProps={{ center: true }}
+        >
+          <span>⚡ Easy Apply</span>
+        </ButtonBase>
       </Box>
     </Paper>
   );
