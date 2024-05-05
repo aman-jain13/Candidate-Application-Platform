@@ -74,7 +74,7 @@ const App = () => {
         (filters.remote === '' || job.location.toLowerCase() === 'remote') &&
         (filters.techStack === '' || job.techStack.toLowerCase().includes(filters.techStack.toLowerCase())) &&
         (filters.role === '' || job.jobRole.toLowerCase().includes(filters.role.toLowerCase())) &&
-        (filters.minBasePay === '' || (job.minJdSalary >= parseInt(filters.minBasePay) && job.maxJdSalary <= parseInt(filters.minBasePay)))
+        (filters.minBasePay === '' || (job.minJdSalary <= parseInt(filters.minBasePay)))
       );
     });
 
@@ -98,11 +98,11 @@ const App = () => {
     <div className="App">
       <Filters filters={filters} onFilterChange={handleFilterChange} />
       <Grid container spacing={2} className="job-grid">
-        {applyFilters().map((job) => (
-          <Grid item key={job.jdUid} className="job-card">
-            <JobCard {...job} />
-          </Grid>
-        ))}
+      {applyFilters().map((job, index) => (
+        <Grid item key={index} className="job-card">
+          <JobCard {...job} />
+        </Grid>
+      ))}
         {loading && <div className="loading" ref={loader}>Loading...</div>}
       </Grid>
     </div>
